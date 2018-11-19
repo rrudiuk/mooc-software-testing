@@ -13,10 +13,11 @@ public class ChocolateBagsTest {
         Assertions.assertEquals(expectedResult, result);
     }
 
-    @ParameterizedTest(name = "small={0}, big={1}, total={2}, result={3}")
-    @CsvSource({ "4,0,10,-1", "4,1,10,-1", "5,2,10,0", "5,3,10,0" })
+    @ParameterizedTest(name= "small={0}, big={1}, totat={2}, result={3}")
+    @CsvSource({ "0,4,7,-1", "0,1,10,-1", "0,2,10,0", "0,1,5,0" })
     public void onlyBigBars(int small, int big, int total, int expectedResult) {
-        int result = new ChocolateBags().calculate(small, big, total);
+        ChocolateBags bags = new ChocolateBags();
+        int result = bags.calculate(small, big, total);
         Assertions.assertEquals(expectedResult, result);
     }
 
@@ -30,9 +31,12 @@ public class ChocolateBagsTest {
     }
 
     @ParameterizedTest(name = "small={0}, big={1}, total={2}, result={3}")
-    @CsvSource({ "4,2,3,3", "3,2,3,3", "2,2,3,-1", "1,2,3,-1" })
+    @CsvSource({ "0,3,1,-1", "2,2,4,-1", "3,1,0,0", "4,0,4,4" })
     public void onlySmallBars(int small, int big, int total, int expectedResult) {
-        int result = new ChocolateBags().calculate(small, big, total);
+        ChocolateBags bags = new ChocolateBags();
+        int result = bags.calculate(small, big, total);
         Assertions.assertEquals(expectedResult, result);
     }
+
+
 }
